@@ -116,7 +116,7 @@ fun homescreen(navController: NavController) {
                         modifier = Modifier.padding(top = 16.dp)
                     )
                     Text(
-                        text = "Juan Faustro",
+                        text = "Fernando Emmanuel",
                         color = Color.White,
                         fontSize = 24.sp,
                         fontWeight = FontWeight.Bold
