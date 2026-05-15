@@ -1,5 +1,6 @@
 package com.example.musicapp
 
+import android.R.attr.type
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -8,9 +9,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.musicapp.screens.detailscreen
 import com.example.musicapp.screens.homescreen
 import com.example.musicapp.ui.theme.MusicAppTheme
@@ -31,10 +34,17 @@ class MainActivity : ComponentActivity() {
                     composable("home") {
                         homescreen(navController = navController)
                     }
+                    composable(
+                        route = "detail/{id}",
+                        arguments = listOf(navArgument("id") { type = NavType.StringType })
+                    ) { backStackEntry ->
+                        val id = backStackEntry.arguments?.getString("id") ?: ""
+                        detailscreen(navController = navController, id = id)
+                    }
+                }
             }
         }
     }
-}
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {

@@ -2,6 +2,7 @@ package com.example.musicapp.screens
 
 import android.util.Log
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -37,6 +38,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
@@ -84,7 +86,11 @@ fun homescreen(navController: NavController) {
                         .fillMaxWidth()
                         .padding(top = 40.dp, start = 16.dp, end = 16.dp)
                         .clip(RoundedCornerShape(24.dp))
-                        .background(Color(0xFF8259F6))
+                        .background(
+                            Brush.verticalGradient(
+                                colors = listOf(Color(0xFF8259F6), Color(0xFF5E35B1))
+                            )
+                        )
                         .padding(16.dp),
                     horizontalAlignment = Alignment.Start
                 ) {
@@ -148,6 +154,7 @@ fun homescreen(navController: NavController) {
                                 .size(width = 170.dp, height = 210.dp)
                                 .clip(RoundedCornerShape(24.dp))
                                 .background(Color.LightGray)
+                                .clickable { navController.navigate("detail/${album.id}") }
                         ) {
                             AsyncImage(
                                 model = ImageRequest.Builder(LocalContext.current)
@@ -238,7 +245,8 @@ fun homescreen(navController: NavController) {
                         Card(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(vertical = 6.dp, horizontal = 16.dp),
+                                .padding(vertical = 6.dp, horizontal = 16.dp)
+                                .clickable { navController.navigate("detail/${album.id}") },
                             shape = RoundedCornerShape(16.dp),
                             colors = CardDefaults.cardColors(containerColor = Color.White),
                             elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
