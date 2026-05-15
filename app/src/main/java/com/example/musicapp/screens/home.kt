@@ -300,7 +300,7 @@ fun homescreen(navController: NavController) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(68.dp)
-                    .clip(RoundedCornerShape(34.dp))
+                    .clip(RoundedCornerShape(20.dp))
                     .background(color = Color(0xFF1E1136))
                     .padding(horizontal = 8.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -313,7 +313,7 @@ fun homescreen(navController: NavController) {
                     Box(
                         modifier = Modifier
                             .size(52.dp)
-                            .clip(CircleShape)
+                            .clip(RoundedCornerShape(20.dp))
                     ) {
                         AsyncImage(
                             model = ImageRequest.Builder(LocalContext.current)

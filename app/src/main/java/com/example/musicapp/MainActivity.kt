@@ -27,7 +27,6 @@ class MainActivity : ComponentActivity() {
                     navController = navController,
                     startDestination = "home"
                 ) {
-                    // Ruta para la pantalla principal
                     composable("home") {
                         homescreen(navController = navController)
                     }
